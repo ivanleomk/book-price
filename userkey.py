@@ -2,7 +2,10 @@ import random
 from bs4 import BeautifulSoup
 import requests
 
-def userkey():
+
+#This generates a random headers so as to bypass Amazon and other website's
+
+def getkey():
     #Chooses a random page from the list of chrome browsers
     pagenum = random.randint(1,4425)
     url = "https://developers.whatismybrowser.com/useragents/explore/software_name/chrome/" + str(pagenum)+"?order_by=times_seen"
@@ -13,9 +16,8 @@ def userkey():
     soup = BeautifulSoup(page.content, 'html.parser')
     keys = soup.find_all('td', class_='useragent')
 
-    selected = random.randint(1,)
-    print(keys[0].get_text())
+    #Selects a random entry from the list of keys on the page
+    selected = random.randint(0,49)
 
     #Returns user key
-
-userkey()
+    return(keys[selected].get_text())
