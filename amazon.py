@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+from userkey import getkey
 
 def amazonData(isbn,key):
     #STUB Testing
@@ -11,12 +12,14 @@ def amazonData(isbn,key):
     page = requests.get(url, headers=headers)
     #Converting it to a soup for scrapping
     soup = BeautifulSoup(page.content, 'html.parser')
-    while(len(soup)==3):
+    while(len(soup)!=60):
+        key = getkey()
+        headers = {'user-agent': key}
         page = requests.get(url, headers=headers)
         soup = BeautifulSoup(page.content, 'html.parser')
         print("Failed Attempt")
         print(len(soup))
-
+    print(len(soup)) #Love in a fallen city == 60 , 41 and 38  and 36 do not work
     #Grabbing the item listing
     item = soup.find_all("div",class_="a-fixed-left-grid")
     #Finds the Title

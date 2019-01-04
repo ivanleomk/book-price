@@ -9,8 +9,9 @@ from amazon import amazonData
 #Generates a user agent to use for the web scrapping
 key = getkey()
 #Using Request to grab the site
-isbn = "9780872208438"
+isbn = "9780199536009"
 #Grabs Amazon Prices
 amazondata = amazonData(isbn,key)
+print(amazondata[0] +" retails at " + amazondata[1] + "on Amazon")
 
-print(amazondata[0] +" retails at " + amazondata[1])
+#Grabs book depo prices
