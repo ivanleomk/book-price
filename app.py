@@ -4,9 +4,9 @@ import requests
 
 #Abstracted Functions
 from userkey import getkey
-from amazon import amazonData
-from bookdepo import bookData
-from betterworld import betterData
+from workfiles.amazon import amazonData
+from workfiles.bookdepo import bookData
+from workfiles.betterworld import betterData
 
 #[Location,Price]
 prices = []
@@ -21,11 +21,15 @@ prices.append(["Amazon",amazondata[1]])
 title = amazondata[0]
 #Grabs book depo prices
 bookdata = bookData(isbn,key)
-prices.append(["Book Depository",bookdata[1]])
+prices.append(["Book Depository",bookdata])
 
 #Grabs BetterWorldBooks prices
 betterdata = betterData(isbn,key)
-prices.append(["BetterWorldBooks",betterdata[1]])
+prices.append(["BetterWorldBooks",betterdata])
+
+#Grabs Kinokuniya prices
+#kinodata = kinoData(isbn,key)
+
 
 #Prints out the prices
 for i in prices:
