@@ -18,7 +18,7 @@ def getkey():
     list = [x.get_text().strip().split("\n") for x in providers[1:]]
 
     #Chooses a random page from the list of user agents
-    cprovid = list[random.randint(0,len(list))]
+    cprovid = list[random.randint(0,len(list)-1)]
     #counts the number of related agents
     relatedagents = cprovid[1]
 
