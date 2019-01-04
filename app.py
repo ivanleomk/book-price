@@ -3,9 +3,6 @@ from bs4 import BeautifulSoup
 import requests
 
 
-#Scrapping a list of user-agent combinations
-
-
 #STUB Testing
 base = "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords="
 isbn = "9780872208438"
