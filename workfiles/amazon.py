@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-from userkey import getkey
+from workfiles.userkey import getkey
 
 def amazonData(isbn,key):
     #STUB Testing
@@ -27,6 +27,6 @@ def amazonData(isbn,key):
     price = soup.find_all("span",class_="sx-price-large")[0].get_text().split('\n')
     price = price[1]+price[2]+"."+price[3]
 
-    data = [title,price]
+    data = [title,price,url]
     #returns Amazon Title and Price
     return data

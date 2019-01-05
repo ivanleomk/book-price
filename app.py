@@ -3,34 +3,32 @@ from bs4 import BeautifulSoup
 import requests
 
 #Abstracted Functions
-from userkey import getkey
+from workfiles.userkey import getkey
 from workfiles.amazon import amazonData
 from workfiles.bookdepo import bookData
 from workfiles.betterworld import betterData
 
-#[Location,Price]
-prices = []
-#Generates a user agent to use for the web scrapping
-key = getkey()
-#Using Request to grab the site
-#Out Of Stock
-isbn = "9780199536009"
-#Grabs Amazon Prices
-amazondata = amazonData(isbn,key)
-prices.append(["Amazon",amazondata[1]])
-title = amazondata[0]
-#Grabs book depo prices
-bookdata = bookData(isbn,key)
-prices.append(["Book Depository",bookdata])
+def getPrices(isbn):
+    #[logo,price,link]
+    prices = []
+    #Generates a user agent to use for the web scrapping
+    key = getkey()
+    #Using Request to grab the site
+    #Grabs Amazon Prices
+    amazondata = amazonData(isbn,key)
+    prices.append(["static/amazon.png",amazondata[1],amazondata[2]])
+    title = amazondata[0]
+    #Grabs book depo prices
+    bookdata = bookData(isbn,key)
+    prices.append(["static/bookdepo.png",bookdata[0],bookdata[1]])
 
-#Grabs BetterWorldBooks prices
-betterdata = betterData(isbn,key)
-prices.append(["BetterWorldBooks",betterdata])
+    #Grabs BetterWorldBooks prices
+    betterdata = betterData(isbn,key)
+    prices.append(["static/bwb.png",betterdata[0],betterdata[1]])
 
-#Grabs Kinokuniya prices
-#kinodata = kinoData(isbn,key)
+    #Grabs Kinokuniya prices
+    #kinodata = kinoData(isbn,key)
+    print(prices)
+    #Prints out the prices
 
-
-#Prints out the prices
-for i in prices:
-    print("%s is %s at %s"%(title,i[1],i[0]))
+    return [prices,title]

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Book Prices</title>
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+      <link rel="stylesheet" href="{{url_for('static',filename='css/book.css')}}">
+
+      <script src="jquery-3.3.1.min.js"></script>
+      <script type="text/javascript">// <![CDATA[
+        function loading(){
+            $("#loading").show();
+            $("#content").hide();
+        }
+// ]]></script>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1 class="logo">Book Price Comparison</h1>
+      </div>
+    </header>
+    <div class="container">
+      <form action ="{{url_for('success')}}" method = "POST">
+      <div class="form-group">
+        <label for="exampleInputEmail1">ISBN Number of Book</label>
+        <input type="text" class="form-control isbn" name = "isbn' aria-describedby="emailHelp" placeholder="Enter ISBN" minlength="13">
+        <small id="emailHelp" class="form-text text-muted">Your information is secure with us :P</small>
+      </div>
+      <button class="btn btn-primary" type="submit">Get Your Prices!</button>
+      </form>
+      {% block content %}
+      {% endblock %}
+    </div>
+
+  </body>
+</html>

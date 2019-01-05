@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+<h4>Prices for {{ title }}</h4>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Provider</th>
+      <th scope="col">Price(US$)</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in data %}
+      <tr>
+      <td><a href="{{ i[2] }}"><img src="{{ i[0] }} "></a></td>
+      <td>{{ i[1] }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
